@@ -22,8 +22,9 @@ class Login extends Component
 
     public function login()
     {
-        $codrotina = 1444;
+        $codrotina = 8177;
         $this->validate(); // Valida o loginName e password
+
 
         //Valida Login e retorna Pccontroi para Parametrizar a HOME
         $pcempr = Pcempr::with(['pccontroi' => function ($query) use ($codrotina) {

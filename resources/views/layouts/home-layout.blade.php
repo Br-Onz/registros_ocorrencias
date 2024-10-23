@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 <body class="app sidebar-mini " x-data="{ open: true }" :class="open ? '' : 'sidenav-toggled' ">
 <!-- Navbar-->
@@ -38,13 +39,15 @@
     </div>
     <ul class="app-menu">
         @foreach(auth()->user()->pccontroi as $Pccontroi)
-            @if($Pccontroi->codrotina == 1444)
+            @if($Pccontroi->codrotina == 8177)
                 @if($Pccontroi->codcontrole == 1 && $Pccontroi->acesso =='S')
-                    <li><a class="app-menu__item some_no_mobile" href="/home"><i class="app-menu__icon bi bi-card-text"></i><span class="app-menu__label">Sugestão</span></a></li>
-                    <li><a class="app-menu__item some_no_mobile" href="/solicitados"><i class="app-menu__icon bi bi-android"></i><span class="app-menu__label">Solicitados</span></a></li>
+                    <li><a class="app-menu__item some_no_mobile" href="/home"><i class="app-menu__icon bi bi-amd"></i><span class="app-menu__label">Cadastro Ocorrências</span></a></li>
                 @endif
                 @if($Pccontroi->codcontrole == 2 && $Pccontroi->acesso =='S')
-                    <li><a class="app-menu__item some_no_mobile" href="/avaliar"><i class="app-menu__icon bi bi-graph-up-arrow"></i><span class="app-menu__label">Avaliar</span></a></li>
+                    <li><a class="app-menu__item some_no_mobile" href="/ocorrencia"><i class="app-menu__icon bi bi-card-text"></i><span class="app-menu__label">Listar Ocorrências</span></a></li>
+                @endif
+                @if($Pccontroi->codcontrole == 3 && $Pccontroi->acesso =='S')
+                    <li><a class="app-menu__item some_no_mobile" href="/tipos"><i class="app-menu__icon bi bi-bar-chart-steps"></i><span class="app-menu__label">Tipos Ocorrências</span></a></li>
                 @endif
             @endif
         @endforeach
@@ -59,81 +62,25 @@
 <x-livewire-alert::scripts />
 <script>
     document.addEventListener('livewire:init', () => {
-        Livewire.on('nome-preenchido', () => {
-            document.getElementById('quantidade').focus();
+        Livewire.on('AbrirModalEditar', () => {
+            $('#exampleModalEditar').modal('show');
         });
 
-        Livewire.on('NovoItem', () => {
-            document.getElementById('codigo').focus();
+        Livewire.on('FecharModalEditar', () => {
+            $('#exampleModalEditar').modal('hide');
         });
 
-        Livewire.on('ModalTableAvaliar', () => {
-            $('#ModalTableAvaliar').modal('show');
+        Livewire.on('FecharModalCadastro', () => {
+            $('#exampleModal').modal('hide');
         });
 
-        Livewire.on('ModalOptions', () => {
-            $('#ModalTableAvaliarOptions').modal('show');
-        });
-
-        Livewire.on('ModalTableAvaliar227', () => {
-            $('#ModalTableAvaliar227').modal('show');
-        });
-
-        Livewire.on('ModalEditItem', () => {
-            $('#ModalEditItem').modal('show');
-        });
-
-        Livewire.on('closeModalEditItem', () => {
-            $('#ModalEditItem').modal('hide');
-        });
-        Livewire.on('abrir-nova-aba', data => {
-           window.open(data[0].url, '_blank');
+        Livewire.on('abrirModalOcorrencia', () => {
+            $('#ModalOcorrencia').modal('show');
         });
 
     });
-
-    function formatarMoeda(input) {
-        // Remove qualquer caractere que não seja um número
-        let valor = input.value.replace(/\D/g, '');
-
-        // Formata o valor como moeda brasileira
-        valor = (valor / 100).toFixed(2).replace('.', ',');
-
-        // Adiciona o símbolo da moeda
-        input.value = valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.') || 'R$ 0,00';
-        if (valor) {
-            input.value = 'R$ ' + input.value;
-        }
-    }
-
-    function spanLoading() {
-        var spanLoading = document.querySelectorAll("#span-loading");
-        var buttonLoading = document.querySelectorAll("#button-loading");
-
-        spanLoading.forEach(function (item) {
-            item.style.display = "none";
-        });
-
-        buttonLoading.forEach(function (item) {
-            item.style.display = "block";
-            item.style.width = "71px";
-        });
-    }
-
-    function spanLoadingHome() {
-        var spanLoading = document.querySelectorAll("#span-loading");
-        var buttonLoading = document.querySelectorAll("#button-loading");
-
-        spanLoading.forEach(function (item) {
-            item.style.display = "none";
-        });
-
-        buttonLoading.forEach(function (item) {
-            item.style.display = "block";
-        });
-    }
-
 </script>
+@livewireScripts
 </body>
 </html>
 
