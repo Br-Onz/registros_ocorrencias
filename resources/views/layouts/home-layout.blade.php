@@ -60,6 +60,7 @@
     </div>
 </main>
 <x-livewire-alert::scripts />
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script>
     document.addEventListener('livewire:init', () => {
         Livewire.on('AbrirModalEditar', () => {
@@ -77,8 +78,29 @@
         Livewire.on('abrirModalOcorrencia', () => {
             $('#ModalOcorrencia').modal('show');
         });
-
     });
+
+
+    $('#sampleTable').DataTable({
+        language: {
+            "sEmptyTable": "Nenhum dado disponível na tabela",
+            "sInfo": "Mostrando _START_ até _END_ de _TOTAL_ entradas",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 entradas",
+            "sInfoFiltered": "(filtrado de _MAX_ entradas no total)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "Mostrar _MENU_ entradas",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...",
+            "sSearch": "Buscar:",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "oPaginate": {
+                "sNext": "Próximo",
+                "sPrevious": "Anterior"
+            }
+        }
+    });
+
 </script>
 @livewireScripts
 </body>
