@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                         @foreach ($ocorrencias as $index => $item)
-                            <tr class="text-center cursor-pointer" wire:click="abrirModal({{ $item->id }})">
+                            <tr class="text-center cursor-pointer" wire:click="abrirModal({{ $item->id }})" data-bs-toggle="modal" data-bs-target="#ModalOcorrencia">
                                 <td class="text-center">{{ $item->nome_usuario }}</td>
                                 <td class="text-center">{{ $item->filial }}</td>
                                 <td class="text-center">{{ $item->tipo_registro }}</td>
