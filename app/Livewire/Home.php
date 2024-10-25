@@ -16,6 +16,7 @@ class Home extends Component
     public $tipo_ocorrencia;
     public $filial;
     public $matricula;
+    public $numero_transacao;
     public $observacoes;
     public $search;
     public $func= [];
@@ -45,6 +46,7 @@ class Home extends Component
         $data_ocorrencia = $this->data_ocorrencia;
         $tipo_ocorrencia = $this->tipo_ocorrencia;
         $matricula = $this->matricula;
+        $numero_transacao = $this->numero_transacao;
         $filial = $this->filial;
         $observacoes = $this->observacoes;
 
@@ -57,14 +59,15 @@ class Home extends Component
         $matricula = $matricula[0]->matricula;
 
 
-        DB::insert('insert into bdc_registros_ocorrencias@dbl200 (id, codusuario, tipo_registro, data, filial, codfunc, data_criacao, descricao)
-            values (seq_reg_ocorrencias_id.NEXTVAL@dbl200, ?, ?, ?, ?, ?, SYSDATE, ?)',
-            [auth()->user()->matricula, $tipo_ocorrencia, $data_ocorrencia, $filial, $matricula, $observacoes]);
+        DB::insert('insert into bdc_registros_ocorrencias@dbl200 (id, codusuario, tipo_registro, data, filial, codfunc, data_criacao, descricao, numero_transacao)
+            values (seq_reg_ocorrencias_id.NEXTVAL@dbl200, ?, ?, ?, ?, ?, SYSDATE, ?, ?)',
+            [auth()->user()->matricula, $tipo_ocorrencia, $data_ocorrencia, $filial, $matricula, $observacoes, $numero_transacao]);
 
 
         $this->data_ocorrencia = null;
         $this->tipo_ocorrencia = null;
         $this->matricula = null;
+        $this->numero_transacao = null;
         $this->filial = null;
         $this->observacoes = null;
         $this->alert('success','Registro cadastrado com sucesso!');

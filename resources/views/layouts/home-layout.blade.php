@@ -39,10 +39,14 @@
     </div>
     <ul class="app-menu">
         @foreach(auth()->user()->pccontroi as $Pccontroi)
-            @if($Pccontroi->codrotina == 1444)
+            @if($Pccontroi->codrotina == 8177)
                 @if($Pccontroi->codcontrole == 1 && $Pccontroi->acesso =='S')
                     <li><a class="app-menu__item some_no_mobile" href="/home"><i class="app-menu__icon bi bi-amd"></i><span class="app-menu__label">Cadastro Ocorrências</span></a></li>
+                @endif
+                @if($Pccontroi->codcontrole == 2 && $Pccontroi->acesso =='S')
                     <li><a class="app-menu__item some_no_mobile" href="/ocorrencia"><i class="app-menu__icon bi bi-card-text"></i><span class="app-menu__label">Listar Ocorrências</span></a></li>
+                @endif
+                @if($Pccontroi->codcontrole == 3 && $Pccontroi->acesso =='S')
                     <li><a class="app-menu__item some_no_mobile" href="/tipos"><i class="app-menu__icon bi bi-bar-chart-steps"></i><span class="app-menu__label">Tipos Ocorrências</span></a></li>
                 @endif
             @endif

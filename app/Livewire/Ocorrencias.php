@@ -23,7 +23,8 @@ class Ocorrencias extends Component
          ro.filial,
          pc_func.nome AS nome_func,
          to_char(ro.data_criacao, \'DD/MM/YYYY HH24:MI:SS\') AS data_criacao,
-         ro.descricao
+         ro.descricao,
+         ro.numero_transacao
   FROM               bdc_registros_ocorrencias@dbl200 ro
                  INNER JOIN
                      bdc_registros_tipos@dbl200 tp
@@ -45,7 +46,8 @@ class Ocorrencias extends Component
          ro.filial,
          pc_func.nome AS nome_func,
          to_char(ro.data_criacao, \'DD/MM/YYYY HH24:MI:SS\') AS data_criacao,
-         ro.descricao
+         ro.descricao,
+         ro.numero_transacao
   FROM               bdc_registros_ocorrencias@dbl200 ro
                  INNER JOIN
                      bdc_registros_tipos@dbl200 tp

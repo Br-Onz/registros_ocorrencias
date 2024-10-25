@@ -8,7 +8,7 @@
 
     <div class="container mt-4">
         <div class="row justify-content-center">
-            <div class="col-lg-10 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="tile">
                     <h3 class="tile-title text-center mb-4">Formulário de Cadastro</h3>
                     <form wire:submit.prevent="cadastrar()">
@@ -35,6 +35,10 @@
                                             <option value="{{ $item->codfil }}">{{ $item->nomfil }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="col-md mb-3">
+                                    <label for="nome">Número de Transação</label>
+                                    <input type="number" class="form-control" wire:model="numero_transacao">
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="nome">Funcionário</label>

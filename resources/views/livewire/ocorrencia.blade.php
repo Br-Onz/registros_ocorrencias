@@ -17,17 +17,20 @@
                             <th>Filial</th>
                             <th>Registro</th>
                             <th>Data da Ocorrência</th>
+                            <th>Número da Transação</th>
                             <th>Funcionário</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($ocorrencias as $index => $item)
                             <tr class="text-center cursor-pointer" wire:click="abrirModal({{ $item->id }})">
-                                <td>{{ $item->nome_usuario }}</td>
-                                <td>{{ $item->filial }}</td>
-                                <td>{{ $item->tipo_registro }}</td>
-                                <td>{{ $item->data }}</td>
-                                <td>{{ $item->nome_func }}</td>
+                                <td class="text-center">{{ $item->nome_usuario }}</td>
+                                <td class="text-center">{{ $item->filial }}</td>
+                                <td class="text-center">{{ $item->tipo_registro }}</td>
+                                <td class="text-center">{{ $item->data }}</td>
+                                <td class="text-center">{{ $item->numero_transacao }}</td>
+                                <td class="text-center">{{ $item->nome_func }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -53,6 +56,7 @@
                         <div class="grid">
                             <span>Data criação: {{ $ModalOcorrencia[0]->data_criacao }}</span>
                             <span>Usuário criação: {{ $ModalOcorrencia[0]->nome_usuario }}</span>
+                            <span>Número da Transação: {{ $ModalOcorrencia[0]->numero_transacao }}</span>
                         </div>
                     @endif
                 </div>
