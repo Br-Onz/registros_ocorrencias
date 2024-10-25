@@ -65,7 +65,6 @@ class Home extends Component
             values (seq_reg_ocorrencias_id.NEXTVAL@dbl200, ?, ?, ?, ?, ?, SYSDATE, ?, ?)',
             [auth()->user()->matricula, $tipo_ocorrencia, $data_ocorrencia, $filial, $matricula, $observacoes, $numero_transacao]);
 
-
         $this->data_ocorrencia = null;
         $this->tipo_ocorrencia = null;
         $this->matricula = null;
