@@ -32,12 +32,14 @@ class Home extends Component
                                                  r030fil@dblsenior fil
                                              ON pc.codigo = fil.codfil and pc.codigo <> 11');
         $this->Filiais = $Filiais;
+
+
     }
 
     public function cadastrar()
     {
 
-         if(empty($this->data_ocorrencia) || empty($this->tipo_ocorrencia) || empty($this->matricula) || empty($this->filial) || empty($this->observacoes)){
+        if(empty($this->data_ocorrencia) || empty($this->tipo_ocorrencia) || empty($this->matricula) || empty($this->filial) || empty($this->observacoes)){
             $this->alert('error','Preencha todos os campos!');
             return;
         }
