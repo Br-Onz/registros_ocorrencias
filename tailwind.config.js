@@ -6,6 +6,7 @@ export default {
         "./resources/**/*.vue",
         "./vendor/livewire/flux-pro/stubs/**/*.blade.php",
         "./vendor/livewire/flux/stubs/**/*.blade.php",
+        './vendor/joshhanley/livewire-autocomplete/resources/views/**/*.blade.php',
     ],
     theme: {
         extend: {},
