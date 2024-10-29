@@ -63,9 +63,9 @@
                                     $fileExtension = pathinfo($item->file_name, PATHINFO_EXTENSION);
                                 @endphp
                                 <a href="{{ asset('storage/ocorrencia_files/'.$item->file_name) }}" target="_blank">
-                                    @if(in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif']))
+                                    @if(in_array(strtolower($fileExtension), ['jpg', 'jpeg', 'png', 'gif']))
                                         <i class="bi bi-image" style="font-size: 50px;"></i>
-                                    @elseif($fileExtension === 'pdf')
+                                    @elseif(strtolower($fileExtension) === 'pdf')
                                         <i class="bi bi-file-earmark-pdf" style="font-size: 50px;"></i>
                                     @else
                                         <i class="bi bi-file-earmark" style="font-size: 50px;"></i>
