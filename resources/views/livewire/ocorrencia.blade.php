@@ -50,7 +50,7 @@
                 <div class="modal-body">
                     @if($ModalOcorrencia)
                         <div class="mb-2">
-                            <textarea class="form-control" rows="10">{{ $ModalOcorrencia[0]->descricao }}</textarea>
+                            <textarea class="form-control" style="text-align: justify" rows="10">{{ $ModalOcorrencia[0]->descricao }}</textarea>
                         </div>
                         <div class="grid">
                             <span>Data criação: {{ $ModalOcorrencia[0]->data_criacao }}</span>

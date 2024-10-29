@@ -65,7 +65,7 @@
                             </div>
                             <div class="row flex justify-content-center">
                                 <div class="col-md-6 mb-3">
-                                    <textarea class="form-control" placeholder="Observações da Ocorrência" wire:model="observacoes" cols="30" rows="5"></textarea>
+                                    <textarea class="form-control" style="text-align: justify" placeholder="Observações da Ocorrência" wire:model="observacoes" cols="30" rows="5"></textarea>
                                 </div>
                             </div>
                         </div>
