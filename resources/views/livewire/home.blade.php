@@ -59,7 +59,7 @@
                                 </div>
                                 @if(empty(!$files))
                                     <p>
-                                        <span id="accepted-files">{{ count($files) }} arquivos</span>
+                                        <span id="accepted-files">{{ count($files) }} arquivo(s) selecionado(s)</span>
                                     </p>
                                 @endif
                             </div>
