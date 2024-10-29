@@ -57,6 +57,11 @@
                                     <input class="input-file w-full" id="my-file" type="file" multiple wire:model="files">
                                     <label tabindex="0" for="my-file" class="input-file-trigger w-full">Selecione um arquivo...</label>
                                 </div>
+                                @if(empty(!$files))
+                                    <p>
+                                        <span id="accepted-files">{{ count($files) }} arquivos</span>
+                                    </p>
+                                @endif
                             </div>
                             <div class="row flex justify-content-center">
                                 <div class="col-md-6 mb-3">
