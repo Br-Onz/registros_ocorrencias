@@ -100,7 +100,7 @@
             }
         }
     });
-
+    document.querySelector("html").classList.add('js');
 </script>
 @livewireScripts
 </body>

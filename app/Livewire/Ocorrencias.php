@@ -13,6 +13,7 @@ class Ocorrencias extends Component
     use LivewireAlert;
     public $ocorrencias = [];
     public $ModalOcorrencia;
+    public $imagem = [];
 
     public function mount()
     {
@@ -60,6 +61,16 @@ class Ocorrencias extends Component
          ON pc_func.matricula = ro.codfunc
     WHERE ro.id = ?', [$id]);
         $this->ModalOcorrencia = $ocorrencia;
+
+        //vamos buscar as imagens bdc_registros_dirimg@dbl200 dirimg
+        $imagem = DB::select('SELECT
+                     dirimg.id_ocorrencia,
+                     dirimg.file_name
+                 FROM
+                     bdc_registros_dirimg@dbl200 dirimg
+                 WHERE
+                     dirimg.id_ocorrencia = ?', [$id]);
+        $this->imagem = $imagem;
         $this->dispatch('abrirModalOcorrencia', $ocorrencia);
     }
 

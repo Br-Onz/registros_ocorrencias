@@ -13,7 +13,7 @@
                     <h3 class="tile-title text-center mb-4">Formulário de Cadastro</h3>
                     <form wire:submit.prevent="cadastrar()">
                         <div class="col-md-12">
-                            <div class="row mb-4">
+                            <div class="row mb-3">
                                 <div class="col-md mb-3">
                                     <label for="nome">Data de Ocorrência</label>
                                     <input type="date" class="form-control" placeholder="Data de Ocorrência" wire:model="data_ocorrencia">
@@ -52,6 +52,12 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="grid justify-content-center text-center mb-4">
+                                <div class="input-file-container mb-2">
+                                    <input class="input-file w-full" id="my-file" type="file" multiple wire:model="files">
+                                    <label tabindex="0" for="my-file" class="input-file-trigger w-full">Selecione um arquivo...</label>
+                                </div>
+                            </div>
                             <div class="row flex justify-content-center">
                                 <div class="col-md-6 mb-3">
                                     <textarea class="form-control" placeholder="Observações da Ocorrência" wire:model="observacoes" cols="30" rows="5"></textarea>
@@ -66,4 +72,35 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const input = document.querySelector('#my-file');
+        const acceptedFiles = document.querySelector('#accepted-files');
+
+        input.addEventListener('change', function (e) {
+            const files = e.target.files;
+            let acceptedCount = 0;
+            let rejectedCount = 0;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.match('image.*') || file.type === 'application/pdf') {
+                    acceptedCount++;
+                } else {
+                    rejectedCount++;
+                }
+            }
+
+            acceptedFiles.textContent = `QT de ${acceptedCount} arquivos`;
+
+            // Alerta caso existam arquivos rejeitados
+            if (rejectedCount > 0) {
+                // Não limpe o input se houver arquivos válidos
+                if (acceptedCount === 0) {
+                    input.value = ''; // Reseta o input se todos forem rejeitados
+                }
+            }
+        });
+
+    </script>
 </div>
